@@ -35,19 +35,3 @@ jobs:
         with:
           files: gnome-touch-keyboard@alaa91h.github.io.zip
 
-      # Uncomment the following steps to automatically publish to extensions.gnome.org
-      # You MUST first generate an API token on extensions.gnome.org and add it 
-      # to your GitHub repository Secrets as EGO_TOKEN.
-      #
-      # - name: Setup Python
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: '3.x'
-      #
-      # - name: Publish to GNOME Extensions
-      #   env:
-      #     EGO_TOKEN: ${{ secrets.EGO_TOKEN }}
-      #   if: env.EGO_TOKEN != ''
-      #   run: |
-      #     pip install gnome-extensions-cli
-      #     gext upload gnome-touch-keyboard@alaa91h.github.io.zip --token $EGO_TOKEN
