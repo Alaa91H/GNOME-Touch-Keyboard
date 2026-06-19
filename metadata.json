@@ -1,0 +1,10 @@
+{
+  "uuid": "gnome-touch-keyboard@alaa91h.github.io",
+  "name": "GNOME Touch Keyboard",
+  "description": "Modern touch-first on-screen keyboard for GNOME Shell on Wayland.",
+  "shell-version": ["45", "46", "47", "48"],
+  "session-modes": ["user"],
+  "url": "https://github.com/Alaa91H/GNOME-Touch-Keyboard",
+  "version": 1,
+  "settings-schema": "org.gnome.shell.extensions.gnome-touch-keyboard"
+}

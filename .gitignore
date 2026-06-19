@@ -1,0 +1,5 @@
+.superpowers/
+*.zip
+*.xpi
+build/
+node_modules/

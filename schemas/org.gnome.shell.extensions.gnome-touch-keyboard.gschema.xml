@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnome-touch-keyboard">
+  <schema id="org.gnome.shell.extensions.gnome-touch-keyboard"
+          path="/org/gnome/shell/extensions/gnome-touch-keyboard/">
+
+    <key name="schema-version" type="i">
+      <default>1</default>
+      <summary>Schema version for forward migrations.</summary>
+    </key>
+
+    <key name="layout-id" type="s">
+      <choices>
+        <choice value="Default"/>
+      </choices>
+      <default>"Default"</default>
+      <summary>Active layout id. Only "Default" valid in Sub-project A.</summary>
+    </key>
+
+    <key name="show-number-row" type="b">
+      <default>true</default>
+      <summary>Render the number row on the Default layout.</summary>
+    </key>
+
+    <key name="theme-mode" type="s">
+      <choices>
+        <choice value="light"/>
+        <choice value="dark"/>
+        <choice value="auto"/>
+      </choices>
+      <default>"auto"</default>
+      <summary>One of "light", "dark", "auto". "auto" follows the GNOME color scheme.</summary>
+    </key>
+
+    <key name="accent-color" type="s">
+      <default>"#3584e4"</default>
+      <summary>Accent used for active/focus highlights. CSS hex string.</summary>
+    </key>
+
+    <key name="compact-density" type="b">
+      <default>false</default>
+      <summary>Render slightly smaller styling. No layout switch in A.</summary>
+    </key>
+
+    <key name="key-height" type="i">
+      <range min="44" max="80"/>
+      <default>52</default>
+      <summary>Logical key height in px. Clamped to [44,80].</summary>
+    </key>
+
+    <key name="key-spacing" type="i">
+      <range min="2" max="12"/>
+      <default>6</default>
+      <summary>Logical key spacing in px. Clamped to [2,12].</summary>
+    </key>
+
+    <key name="key-radius" type="i">
+      <range min="0" max="20"/>
+      <default>10</default>
+      <summary>Logical corner radius in px. Clamped to [0,20].</summary>
+    </key>
+
+    <key name="font-scale" type="d">
+      <range min="0.8" max="1.5"/>
+      <default>1.0</default>
+      <summary>Multiplier on key label font size. Clamped to [0.8,1.5].</summary>
+    </key>
+
+    <key name="debug-logging" type="b">
+      <default>false</default>
+      <summary>Verbose logging to journalctl. Off by default.</summary>
+    </key>
+
+    <key name="position-mode" type="s">
+      <choices>
+        <choice value="bottom"/>
+      </choices>
+      <default>"bottom"</default>
+      <summary>Reserved seam. Only "bottom" implemented in A; other values coerce to "bottom".</summary>
+    </key>
+
+  </schema>
+</schemalist>

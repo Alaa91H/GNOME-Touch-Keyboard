@@ -1,0 +1,96 @@
+/*
+ * GJS OSK Pro — Sub-project A stylesheet.
+ * Spec §6. CSS custom properties on #osk-root; light/dark via classes;
+ * high-contrast via the system high-contrast class on the stage.
+ * No external fonts, no icon fonts, no SVG assets. Original GNOME-friendly
+ * look — not derived from any proprietary design.
+ */
+
+/* ---- Light theme tokens (default) ---- */
+#osk-root.osk-light {
+  --osk-bg: #f6f5f4;
+  --osk-key-bg: #ffffff;
+  --osk-key-fg: #1d1b20;
+  --osk-key-hover-bg: #eceaed;
+  --osk-key-pressed-bg: #dcd9dd;
+  --osk-key-border: rgba(0,0,0,0.08);
+}
+
+/* ---- Dark theme tokens ---- */
+#osk-root.osk-dark {
+  --osk-bg: #1e1e22;
+  --osk-key-bg: #2f2f36;
+  --osk-key-fg: #e8eaed;
+  --osk-key-hover-bg: #3a3a42;
+  --osk-key-pressed-bg: #4a4a52;
+  --osk-key-border: rgba(255,255,255,0.06);
+}
+
+/* Shared layout variables (set by ThemeManager inline style) */
+#osk-root {
+  --osk-key-height: 52px;
+  --osk-key-spacing: 6px;
+  --osk-key-radius: 10px;
+  --osk-accent: #3584e4;
+  --osk-font-scale: 1.0;
+  background-color: var(--osk-bg);
+  padding: var(--osk-key-spacing);
+  border-radius: calc(var(--osk-key-radius) + 4px);
+}
+
+/* ---- Rows ---- */
+.osk-row {
+  spacing: var(--osk-key-spacing);
+  margin-bottom: var(--osk-key-spacing);
+}
+.osk-row:last-child { margin-bottom: 0; }
+
+/* ---- Keys ---- */
+.osk-key {
+  min-height: var(--osk-key-height);
+  border-radius: var(--osk-key-radius);
+  background-color: var(--osk-key-bg);
+  color: var(--osk-key-fg);
+  border: 1px solid var(--osk-key-border);
+  font-size: calc(16px * var(--osk-font-scale));
+  font-weight: 500;
+  padding: 0 10px;
+  transition-duration: 80ms;
+}
+.osk-key:hover  { background-color: var(--osk-key-hover-bg); }
+.osk-key:active,
+.osk-key:active:focus {
+  background-color: var(--osk-key-pressed-bg);
+  border-color: var(--osk-accent);
+}
+.osk-key:focus  { border-color: var(--osk-accent); }
+.osk-key:checked {
+  background-color: var(--osk-accent);
+  color: #ffffff;
+  border-color: var(--osk-accent);
+}
+
+/* Width modifiers (driven by layout width factor) */
+.osk-key--wide  { /* wider via natural expand */ }
+.osk-key--space { /* widest via natural expand */ }
+
+/* Compact density (optional in A; only minor shrink) */
+#osk-root.osk-compact .osk-key {
+  min-height: calc(var(--osk-key-height) * 0.9);
+  font-size: calc(14px * var(--osk-font-scale));
+}
+
+/* ---- High contrast (system) ----
+ * GNOME sets the high-contrast theme at the stage level; we make keys
+ * starkly outlined when that's active.
+ */
+.stage-high-contrast #osk-root .osk-key {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+.stage-high-contrast #osk-root.osk-light .osk-key {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+}
