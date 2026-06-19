@@ -53,7 +53,7 @@ I will **not** claim a feature "works" based on STATIC checks alone. I will clai
 | `src/ui/KeyButton.js` | One `St.Button`; `pressed` signal; state classes; `destroy()` | §2, §6 |
 | `README.md` | Install/build/test instructions | §1 |
 | `ARCHITECTURE.md` | Module map + data flow (mirrors spec §2/§4) | §1 |
-| `COMPATIBILITY.md` | GNOME 45–48 + Wayland support matrix | §1 |
+| `COMPATIBILITY.md` | GNOME 45–50 + Wayland support matrix | §1 |
 | `CHANGELOG.md` | v0.1.0 entry | §1 |
 
 **Not created in A** (despite appearing in the long-term roadmap): `GeometryManager`, `GestureController`, `SuggestionBar`, `EmojiPanel`, `ClipboardService`, `IBusService`, `MonitorController`, layout files beyond `us.json`, modes beyond Default. Spec §9 makes this explicit.
@@ -2297,6 +2297,8 @@ partially-built extension, and leaves the Shell intact.
 | 46 | Primary test target (Wayland). |
 | 47 | Targeted. |
 | 48 | Targeted. |
+| 49 | Targeted. |
+| 50 | Targeted. |
 
 ## Sessions
 
@@ -2307,7 +2309,7 @@ partially-built extension, and leaves the Shell intact.
 ## Known API risks
 
 - `Meta.VirtualInputDevice.new(...)` signature has been stable across
-  45–48 but is feature-detected at construction; on failure the extension
+  45–50 but is feature-detected at construction; on failure the extension
   disables itself cleanly.
 - `St.Settings.get_color_scheme()` notify signal is unreliable on some
   versions; ThemeManager also polls at 1s when theme-mode is `auto`.

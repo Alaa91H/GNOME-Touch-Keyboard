@@ -2,7 +2,7 @@
 
 **Status:** Draft for review
 **Date:** 2026-06-19
-**GNOME Shell target:** 45, 46, 47, 48+ (ES module imports)
+**GNOME Shell target:** 45, 46, 47, 50+ (ES module imports)
 **Primary session:** Wayland (X11 best-effort, unsupported)
 **Cycle scope:** Foundation architecture + a single Default touch layout, end-to-end and shippable.
 
@@ -294,7 +294,7 @@ The cycle is complete when **all** of the following are true and verified by man
 
 | Risk | Mitigation |
 |------|------------|
-| `Meta.VirtualInputDevice` API differences across GNOME 45–48 | Feature-detect at construction; if unavailable, log and disable the extension gracefully (no crash). |
+| `Meta.VirtualInputDevice` API differences across GNOME 45–50 | Feature-detect at construction; if unavailable, log and disable the extension gracefully (no crash). |
 | `St.Settings.color_scheme` notify signal not firing | ThemeManager re-reads on settings change AND on a 1s poll fallback (cheap). Documented decision: poll interval 1000ms, only in `auto` mode. |
 | Extension crashes mid-construction | Per-step try/catch; reverse teardown of already-built components; extension self-disables. |
 | Leaked signals on prefs change while enabled | All settings subscriptions go through `SettingsController` registry; single `dispose()` disconnects all. |
@@ -325,7 +325,7 @@ No code for B/C/D/E is written in A. Hooks are **interface contracts documented 
 4. **No key repeat in A.** Avoids timer-leak risk and GNOME repeat-API variance; explicitly listed in acceptance exclusions.
 5. **`position-mode` is a setting but only `bottom` works.** Reading it is a documented seam; other values coerce silently to `bottom`.
 6. **`compact-density` is a setting but only adjusts styling slightly in A.** No layout switch.
-7. **Auto theme uses `St.Settings.color_scheme` + 1s poll fallback.** Cheapest stable approach across GNOME 45–48.
+7. **Auto theme uses `St.Settings.color_scheme` + 1s poll fallback.** Cheapest stable approach across GNOME 45–50.
 8. **Schema version starts at 1.** Leaves room for `0` (pre-release) detection in future.
 9. **`session-modes` unset in metadata.** A targets the user session only; lock-screen support is a future sub-project.
 10. **Layout JSON ships in `resources/layouts/`.** Loaded at register time using the GNOME 45+ ES-module pattern. `extension.js` receives the `Extension` instance (its `this`) and exposes `this.path` (the on-disk extension directory provided by GNOME Shell). This path is passed explicitly into `LayoutManager`'s constructor — `LayoutManager` does **not** reach for a global `Me` reference. File loading: `Gio.File.new_for_path(\`${dir}/resources/layouts/us.json\`)`, read via `file.load_contents(null)` → decode the `GBytes` to a JS string → `JSON.parse`. No absolute paths, no legacy `imports.*` API.

@@ -15,7 +15,7 @@ without rewriting the foundation.
 
 ## Requirements
 
-- GNOME Shell 45, 46, 47, or 48
+- GNOME Shell 45, 46, 47, 48, 49, or 50
 - Wayland session (primary). X11 is unsupported.
 - `gnome-extensions` tool (ships with GNOME Shell)
 

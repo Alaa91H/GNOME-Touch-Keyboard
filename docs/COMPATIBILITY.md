@@ -6,6 +6,8 @@
 | 46 | Primary test target (Wayland). |
 | 47 | Targeted. |
 | 48 | Targeted. |
+| 49 | Targeted. |
+| 50 | Targeted. |
 
 ## Sessions
 
@@ -16,7 +18,7 @@
 ## Known API risks
 
 - `Meta.VirtualInputDevice.new(...)` signature has been stable across
-  45–48 but is feature-detected at construction; on failure the extension
+  45–50 but is feature-detected at construction; on failure the extension
   disables itself cleanly (the `input` construction step is wrapped in
   `ExtensionController._try`).
 - The actual key-injection method used is `notify_keyval(time, keyval,
