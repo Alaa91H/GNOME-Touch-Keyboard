@@ -1,0 +1,44 @@
+{
+  "rows": [
+    [
+      {"k": "й", "label": "й", "width": 1},
+      {"k": "ц", "label": "ц", "width": 1},
+      {"k": "у", "label": "у", "width": 1},
+      {"k": "к", "label": "к", "width": 1},
+      {"k": "е", "label": "е", "width": 1},
+      {"k": "н", "label": "н", "width": 1},
+      {"k": "г", "label": "г", "width": 1},
+      {"k": "ш", "label": "ш", "width": 1},
+      {"k": "щ", "label": "щ", "width": 1},
+      {"k": "з", "label": "з", "width": 1},
+      {"k": "х", "label": "х", "width": 1}
+    ],
+    [
+      {"k": "ф", "label": "ф", "width": 1},
+      {"k": "ы", "label": "ы", "width": 1},
+      {"k": "в", "label": "в", "width": 1},
+      {"k": "а", "label": "а", "width": 1},
+      {"k": "п", "label": "п", "width": 1},
+      {"k": "р", "label": "р", "width": 1},
+      {"k": "о", "label": "о", "width": 1},
+      {"k": "л", "label": "л", "width": 1},
+      {"k": "д", "label": "д", "width": 1},
+      {"k": "ж", "label": "ж", "width": 1},
+      {"k": "э", "label": "э", "width": 1}
+    ],
+    [
+      {"k": "я", "label": "я", "width": 1},
+      {"k": "ч", "label": "ч", "width": 1},
+      {"k": "с", "label": "с", "width": 1},
+      {"k": "м", "label": "м", "width": 1},
+      {"k": "и", "label": "и", "width": 1},
+      {"k": "т", "label": "т", "width": 1},
+      {"k": "ь", "label": "ь", "width": 1},
+      {"k": "б", "label": "б", "width": 1},
+      {"k": "ю", "label": "ю", "width": 1}
+    ],
+    [
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

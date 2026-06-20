@@ -1,0 +1,42 @@
+{
+  "rows": [
+    [
+      {"k": "ქ", "label": "ქ", "width": 1},
+      {"k": "ე", "label": "ე", "width": 1},
+      {"k": "რ", "label": "რ", "width": 1},
+      {"k": "ტ", "label": "ტ", "width": 1},
+      {"k": "ყ", "label": "ყ", "width": 1},
+      {"k": "უ", "label": "უ", "width": 1},
+      {"k": "ი", "label": "ი", "width": 1},
+      {"k": "ო", "label": "ო", "width": 1},
+      {"k": "პ", "label": "პ", "width": 1},
+      {"k": "ლ", "label": "ლ", "width": 1}
+    ],
+    [
+      {"k": "ჟ", "label": "ჟ", "width": 1},
+      {"k": "ღ", "label": "ღ", "width": 1},
+      {"k": "ა", "label": "ა", "width": 1},
+      {"k": "ს", "label": "ს", "width": 1},
+      {"k": "დ", "label": "დ", "width": 1},
+      {"k": "ფ", "label": "ფ", "width": 1},
+      {"k": "გ", "label": "გ", "width": 1},
+      {"k": "ჰ", "label": "ჰ", "width": 1},
+      {"k": "ჯ", "label": "ჯ", "width": 1},
+      {"k": "ც", "label": "ც", "width": 1}
+    ],
+    [
+      {"k": "თ", "label": "თ", "width": 1},
+      {"k": "ქ", "label": "ქ", "width": 1},
+      {"k": "კ", "label": "კ", "width": 1},
+      {"k": "ლ", "label": "ლ", "width": 1},
+      {"k": "მ", "label": "მ", "width": 1},
+      {"k": "ნ", "label": "ნ", "width": 1},
+      {"k": "რ", "label": "რ", "width": 1},
+      {"k": "ს", "label": "ს", "width": 1},
+      {"k": "ტ", "label": "ტ", "width": 1}
+    ],
+    [
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "rows": [
+    [
+      {"k": "க", "label": "க", "width": 1},
+      {"k": "ச", "label": "ச", "width": 1},
+      {"k": "ட", "label": "ட", "width": 1},
+      {"k": "த", "label": "த", "width": 1},
+      {"k": "ப", "label": "ப", "width": 1},
+      {"k": "ற", "label": "ற", "width": 1},
+      {"k": "ய", "label": "ய", "width": 1},
+      {"k": "ர", "label": "ர", "width": 1},
+      {"k": "ல", "label": "ல", "width": 1},
+      {"k": "வ", "label": "வ", "width": 1}
+    ],
+    [
+      {"k": "ழ", "label": "ழ", "width": 1},
+      {"k": "ள", "label": "ள", "width": 1},
+      {"k": "ங", "label": "ங", "width": 1},
+      {"k": "ஞ", "label": "ஞ", "width": 1},
+      {"k": "ண", "label": "ண", "width": 1},
+      {"k": "ந", "label": "ந", "width": 1},
+      {"k": "ம", "label": "ம", "width": 1},
+      {"k": "ன", "label": "ன", "width": 1}
+    ],
+    [
+      {"k": "அ", "label": "அ", "width": 1},
+      {"k": "ஆ", "label": "ஆ", "width": 1},
+      {"k": "இ", "label": "இ", "width": 1},
+      {"k": "ஈ", "label": "ஈ", "width": 1},
+      {"k": "உ", "label": "உ", "width": 1},
+      {"k": "ஊ", "label": "ஊ", "width": 1},
+      {"k": "எ", "label": "எ", "width": 1},
+      {"k": "ஏ", "label": "ஏ", "width": 1},
+      {"k": "ஐ", "label": "ஐ", "width": 1}
+    ],
+    [
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "rows": [
+    [
+      {"k": "ς", "label": "ς", "width": 1},
+      {"k": "ε", "label": "ε", "width": 1},
+      {"k": "ρ", "label": "ρ", "width": 1},
+      {"k": "τ", "label": "τ", "width": 1},
+      {"k": "υ", "label": "υ", "width": 1},
+      {"k": "θ", "label": "θ", "width": 1},
+      {"k": "ι", "label": "ι", "width": 1},
+      {"k": "ο", "label": "ο", "width": 1},
+      {"k": "π", "label": "π", "width": 1}
+    ],
+    [
+      {"k": "α", "label": "α", "width": 1},
+      {"k": "σ", "label": "σ", "width": 1},
+      {"k": "δ", "label": "δ", "width": 1},
+      {"k": "φ", "label": "φ", "width": 1},
+      {"k": "γ", "label": "γ", "width": 1},
+      {"k": "η", "label": "η", "width": 1},
+      {"k": "ξ", "label": "ξ", "width": 1},
+      {"k": "κ", "label": "κ", "width": 1},
+      {"k": "λ", "label": "λ", "width": 1}
+    ],
+    [
+      {"k": "ζ", "label": "ζ", "width": 1},
+      {"k": "χ", "label": "χ", "width": 1},
+      {"k": "ψ", "label": "ψ", "width": 1},
+      {"k": "ω", "label": "ω", "width": 1},
+      {"k": "β", "label": "β", "width": 1},
+      {"k": "ν", "label": "ν", "width": 1},
+      {"k": "μ", "label": "μ", "width": 1},
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

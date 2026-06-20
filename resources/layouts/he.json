@@ -1,0 +1,39 @@
+{
+  "rows": [
+    [
+      {"k": "ק", "label": "ק", "width": 1},
+      {"k": "ר", "label": "ר", "width": 1},
+      {"k": "א", "label": "א", "width": 1},
+      {"k": "ט", "label": "ט", "width": 1},
+      {"k": "ו", "label": "ו", "width": 1},
+      {"k": "ן", "label": "ן", "width": 1},
+      {"k": "ם", "label": "ם", "width": 1},
+      {"k": "פ", "label": "פ", "width": 1}
+    ],
+    [
+      {"k": "ש", "label": "ש", "width": 1},
+      {"k": "ד", "label": "ד", "width": 1},
+      {"k": "ג", "label": "ג", "width": 1},
+      {"k": "כ", "label": "כ", "width": 1},
+      {"k": "ע", "label": "ע", "width": 1},
+      {"k": "י", "label": "י", "width": 1},
+      {"k": "ח", "label": "ח", "width": 1},
+      {"k": "ל", "label": "ל", "width": 1},
+      {"k": "ך", "label": "ך", "width": 1}
+    ],
+    [
+      {"k": "ז", "label": "ז", "width": 1},
+      {"k": "ס", "label": "ס", "width": 1},
+      {"k": "ב", "label": "ב", "width": 1},
+      {"k": "ה", "label": "ה", "width": 1},
+      {"k": "נ", "label": "נ", "width": 1},
+      {"k": "מ", "label": "מ", "width": 1},
+      {"k": "צ", "label": "צ", "width": 1},
+      {"k": "ת", "label": "ת", "width": 1},
+      {"k": "ץ", "label": "ץ", "width": 1}
+    ],
+    [
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

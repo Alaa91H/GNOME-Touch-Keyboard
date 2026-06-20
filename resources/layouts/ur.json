@@ -1,0 +1,42 @@
+{
+  "rows": [
+    [
+      {"k": "ض", "label": "ض", "width": 1},
+      {"k": "ص", "label": "ص", "width": 1},
+      {"k": "ث", "label": "ث", "width": 1},
+      {"k": "ق", "label": "ق", "width": 1},
+      {"k": "ف", "label": "ف", "width": 1},
+      {"k": "غ", "label": "غ", "width": 1},
+      {"k": "ع", "label": "ع", "width": 1},
+      {"k": "ہ", "label": "ہ", "width": 1},
+      {"k": "خ", "label": "خ", "width": 1},
+      {"k": "د", "label": "د", "width": 1}
+    ],
+    [
+      {"k": "ش", "label": "ش", "width": 1},
+      {"k": "س", "label": "س", "width": 1},
+      {"k": "ی", "label": "ی", "width": 1},
+      {"k": "ب", "label": "ب", "width": 1},
+      {"k": "ل", "label": "ل", "width": 1},
+      {"k": "ا", "label": "ا", "width": 1},
+      {"k": "ت", "label": "ت", "width": 1},
+      {"k": "ن", "label": "ن", "width": 1},
+      {"k": "م", "label": "م", "width": 1},
+      {"k": "ک", "label": "ک", "width": 1}
+    ],
+    [
+      {"k": "ٹ", "label": "ٹ", "width": 1},
+      {"k": "ڈ", "label": "ڈ", "width": 1},
+      {"k": "ڑ", "label": "ڑ", "width": 1},
+      {"k": "ں", "label": "ں", "width": 1},
+      {"k": "ے", "label": "ے", "width": 1},
+      {"k": "پ", "label": "پ", "width": 1},
+      {"k": "چ", "label": "چ", "width": 1},
+      {"k": "گ", "label": "گ", "width": 1},
+      {"k": "ژ", "label": "ژ", "width": 1}
+    ],
+    [
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

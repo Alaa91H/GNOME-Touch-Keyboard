@@ -1,0 +1,46 @@
+{
+  "rows": [
+    [
+      {"k": "क", "label": "क", "width": 1},
+      {"k": "ख", "label": "ख", "width": 1},
+      {"k": "ग", "label": "ग", "width": 1},
+      {"k": "घ", "label": "घ", "width": 1},
+      {"k": "ङ", "label": "ङ", "width": 1},
+      {"k": "च", "label": "च", "width": 1},
+      {"k": "छ", "label": "छ", "width": 1},
+      {"k": "ज", "label": "ज", "width": 1},
+      {"k": "झ", "label": "झ", "width": 1},
+      {"k": "ञ", "label": "ञ", "width": 1}
+    ],
+    [
+      {"k": "ट", "label": "ट", "width": 1},
+      {"k": "ठ", "label": "ठ", "width": 1},
+      {"k": "ड", "label": "ड", "width": 1},
+      {"k": "ढ", "label": "ढ", "width": 1},
+      {"k": "ण", "label": "ण", "width": 1},
+      {"k": "त", "label": "त", "width": 1},
+      {"k": "थ", "label": "थ", "width": 1},
+      {"k": "द", "label": "द", "width": 1},
+      {"k": "ध", "label": "ध", "width": 1},
+      {"k": "न", "label": "न", "width": 1}
+    ],
+    [
+      {"k": "प", "label": "प", "width": 1},
+      {"k": "फ", "label": "फ", "width": 1},
+      {"k": "ब", "label": "ब", "width": 1},
+      {"k": "भ", "label": "भ", "width": 1},
+      {"k": "म", "label": "म", "width": 1},
+      {"k": "य", "label": "य", "width": 1},
+      {"k": "र", "label": "र", "width": 1},
+      {"k": "ल", "label": "ल", "width": 1},
+      {"k": "व", "label": "व", "width": 1}
+    ],
+    [
+      {"k": "श", "label": "श", "width": 1},
+      {"k": "ष", "label": "ष", "width": 1},
+      {"k": "स", "label": "स", "width": 1},
+      {"k": "ह", "label": "ह", "width": 1},
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

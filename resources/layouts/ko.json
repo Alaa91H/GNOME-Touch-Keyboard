@@ -1,0 +1,39 @@
+{
+  "rows": [
+    [
+      {"k": "ㅂ", "label": "ㅂ", "width": 1},
+      {"k": "ㅈ", "label": "ㅈ", "width": 1},
+      {"k": "ㄷ", "label": "ㄷ", "width": 1},
+      {"k": "ㄱ", "label": "ㄱ", "width": 1},
+      {"k": "ㅅ", "label": "ㅅ", "width": 1},
+      {"k": "ㅛ", "label": "ㅛ", "width": 1},
+      {"k": "ㅕ", "label": "ㅕ", "width": 1},
+      {"k": "ㅑ", "label": "ㅑ", "width": 1},
+      {"k": "ㅐ", "label": "ㅐ", "width": 1},
+      {"k": "ㅔ", "label": "ㅔ", "width": 1}
+    ],
+    [
+      {"k": "ㅁ", "label": "ㅁ", "width": 1},
+      {"k": "ㄴ", "label": "ㄴ", "width": 1},
+      {"k": "ㅇ", "label": "ㅇ", "width": 1},
+      {"k": "ㄹ", "label": "ㄹ", "width": 1},
+      {"k": "ㅎ", "label": "ㅎ", "width": 1},
+      {"k": "ㅗ", "label": "ㅗ", "width": 1},
+      {"k": "ㅓ", "label": "ㅓ", "width": 1},
+      {"k": "ㅏ", "label": "ㅏ", "width": 1},
+      {"k": "ㅣ", "label": "ㅣ", "width": 1}
+    ],
+    [
+      {"k": "ㅋ", "label": "ㅋ", "width": 1},
+      {"k": "ㅌ", "label": "ㅌ", "width": 1},
+      {"k": "ㅊ", "label": "ㅊ", "width": 1},
+      {"k": "ㅍ", "label": "ㅍ", "width": 1},
+      {"k": "ㅠ", "label": "ㅠ", "width": 1},
+      {"k": "ㅜ", "label": "ㅜ", "width": 1},
+      {"k": "ㅡ", "label": "ㅡ", "width": 1}
+    ],
+    [
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

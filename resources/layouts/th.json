@@ -1,0 +1,42 @@
+{
+  "rows": [
+    [
+      {"k": "ๆ", "label": "ๆ", "width": 1},
+      {"k": "ไ", "label": "ไ", "width": 1},
+      {"k": "ำ", "label": "ำ", "width": 1},
+      {"k": "พ", "label": "พ", "width": 1},
+      {"k": "ะ", "label": "ะ", "width": 1},
+      {"k": "ั", "label": "ั", "width": 1},
+      {"k": "ี", "label": "ี", "width": 1},
+      {"k": "ร", "label": "ร", "width": 1},
+      {"k": "น", "label": "น", "width": 1},
+      {"k": "ย", "label": "ย", "width": 1}
+    ],
+    [
+      {"k": "ฟ", "label": "ฟ", "width": 1},
+      {"k": "ห", "label": "ห", "width": 1},
+      {"k": "ก", "label": "ก", "width": 1},
+      {"k": "ด", "label": "ด", "width": 1},
+      {"k": "เ", "label": "เ", "width": 1},
+      {"k": "้", "label": "้", "width": 1},
+      {"k": "่", "label": "่", "width": 1},
+      {"k": "า", "label": "า", "width": 1},
+      {"k": "ส", "label": "ส", "width": 1},
+      {"k": "ว", "label": "ว", "width": 1}
+    ],
+    [
+      {"k": "ผ", "label": "ผ", "width": 1},
+      {"k": "ป", "label": "ป", "width": 1},
+      {"k": "แ", "label": "แ", "width": 1},
+      {"k": "อ", "label": "อ", "width": 1},
+      {"k": "ิ", "label": "ิ", "width": 1},
+      {"k": "ื", "label": "ื", "width": 1},
+      {"k": "ท", "label": "ท", "width": 1},
+      {"k": "ม", "label": "ม", "width": 1},
+      {"k": "ใ", "label": "ใ", "width": 1}
+    ],
+    [
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

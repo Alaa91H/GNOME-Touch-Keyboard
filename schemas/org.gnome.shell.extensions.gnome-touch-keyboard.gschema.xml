@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- Updated schema with language-id key -->
 <schemalist gettext-domain="gnome-touch-keyboard">
   <schema id="org.gnome.shell.extensions.gnome-touch-keyboard"
           path="/org/gnome/shell/extensions/gnome-touch-keyboard/">
@@ -14,6 +14,48 @@
       </choices>
       <default>"Default"</default>
       <summary>Active layout id. Only "Default" valid in Sub-project A.</summary>
+    </key>
+
+    <!-- Language selection – LanguageManager scans resources/layouts/*.json
+         at runtime; these choices are the officially shipped set. -->
+    <key name="language-id" type="s">
+      <choices>
+        <choice value="en"/>
+        <choice value="ar"/>
+        <choice value="de"/>
+        <choice value="fr"/>
+        <choice value="es"/>
+        <choice value="ru"/>
+        <choice value="zh"/>
+        <choice value="ja"/>
+        <choice value="ko"/>
+        <choice value="hi"/>
+        <choice value="pt"/>
+        <choice value="it"/>
+        <choice value="tr"/>
+        <choice value="uk"/>
+        <choice value="fa"/>
+        <choice value="th"/>
+        <choice value="vi"/>
+        <choice value="bn"/>
+        <choice value="id"/>
+        <choice value="ms"/>
+        <choice value="sw"/>
+        <choice value="pl"/>
+        <choice value="nl"/>
+        <choice value="sv"/>
+        <choice value="el"/>
+        <choice value="he"/>
+        <choice value="ur"/>
+        <choice value="ta"/>
+        <choice value="te"/>
+        <choice value="ml"/>
+        <choice value="ka"/>
+        <choice value="my"/>
+        <choice value="km"/>
+      </choices>
+      <default>"en"</default>
+      <summary>Active language layout identifier. Persisted across sessions.</summary>
     </key>
 
     <key name="show-number-row" type="b">

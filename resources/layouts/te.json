@@ -1,0 +1,42 @@
+{
+  "rows": [
+    [
+      {"k": "క", "label": "క", "width": 1},
+      {"k": "ఖ", "label": "ఖ", "width": 1},
+      {"k": "గ", "label": "గ", "width": 1},
+      {"k": "ఘ", "label": "ఘ", "width": 1},
+      {"k": "ఙ", "label": "ఙ", "width": 1},
+      {"k": "చ", "label": "చ", "width": 1},
+      {"k": "ఛ", "label": "ఛ", "width": 1},
+      {"k": "జ", "label": "జ", "width": 1},
+      {"k": "ఝ", "label": "ఝ", "width": 1},
+      {"k": "ఞ", "label": "ఞ", "width": 1}
+    ],
+    [
+      {"k": "ట", "label": "ట", "width": 1},
+      {"k": "ఠ", "label": "ఠ", "width": 1},
+      {"k": "డ", "label": "డ", "width": 1},
+      {"k": "ఢ", "label": "ఢ", "width": 1},
+      {"k": "ణ", "label": "ణ", "width": 1},
+      {"k": "త", "label": "త", "width": 1},
+      {"k": "థ", "label": "థ", "width": 1},
+      {"k": "ద", "label": "ద", "width": 1},
+      {"k": "ధ", "label": "ధ", "width": 1},
+      {"k": "న", "label": "న", "width": 1}
+    ],
+    [
+      {"k": "ప", "label": "ప", "width": 1},
+      {"k": "ఫ", "label": "ఫ", "width": 1},
+      {"k": "బ", "label": "బ", "width": 1},
+      {"k": "భ", "label": "భ", "width": 1},
+      {"k": "మ", "label": "మ", "width": 1},
+      {"k": "య", "label": "య", "width": 1},
+      {"k": "ర", "label": "ర", "width": 1},
+      {"k": "ల", "label": "ల", "width": 1},
+      {"k": "వ", "label": "వ", "width": 1}
+    ],
+    [
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}

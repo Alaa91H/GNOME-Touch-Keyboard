@@ -1,0 +1,37 @@
+{
+  "rows": [
+    [
+      {"k": "a", "label": "a", "width": 1},
+      {"k": "z", "label": "z", "width": 1},
+      {"k": "e", "label": "e", "width": 1},
+      {"k": "r", "label": "r", "width": 1},
+      {"k": "t", "label": "t", "width": 1},
+      {"k": "y", "label": "y", "width": 1},
+      {"k": "u", "label": "u", "width": 1},
+      {"k": "i", "label": "i", "width": 1},
+      {"k": "o", "label": "o", "width": 1},
+      {"k": "p", "label": "p", "width": 1}
+    ],
+    [
+      {"k": "q", "label": "q", "width": 1},
+      {"k": "s", "label": "s", "width": 1},
+      {"k": "d", "label": "d", "width": 1},
+      {"k": "f", "label": "f", "width": 1},
+      {"k": "g", "label": "g", "width": 1},
+      {"k": "h", "label": "h", "width": 1},
+      {"k": "j", "label": "j", "width": 1},
+      {"k": "k", "label": "k", "width": 1},
+      {"k": "l", "label": "l", "width": 1}
+    ],
+    [
+      {"k": "w", "label": "w", "width": 1},
+      {"k": "x", "label": "x", "width": 1},
+      {"k": "c", "label": "c", "width": 1},
+      {"k": "v", "label": "v", "width": 1},
+      {"k": "b", "label": "b", "width": 1},
+      {"k": "n", "label": "n", "width": 1},
+      {"k": "m", "label": "m", "width": 1},
+      {"k": "space", "label": " ", "width": 5}
+    ]
+  ]
+}
