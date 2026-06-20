@@ -7,39 +7,35 @@
 import St from 'gi://St';
 import { KeyButton } from './KeyButton.js';
 import { createLanguageButton } from './LanguageButton.js';
-const ExtensionUtils = imports.misc.extensionUtils;
 
 let _liveKeyCount = 0; // module-level counter for the leak check (acceptance #12)
 
 export class KeyboardRoot {
-  constructor(rootActor, layoutManager, layerManager, keyboardState, inputDispatcher, settings) {
+  constructor(rootActor, languageManager, layerManager, keyboardState, inputDispatcher, settings) {
     this._root = rootActor;            // #osk-root, owned by OskWindowController
-    this._layout = layoutManager;
+    this._langs = languageManager;
     this._layers = layerManager;
     this._state = keyboardState;
     this._dispatcher = inputDispatcher;
     this._settings = settings;
-    // Initialize language switch button
-    this._languageButton = createLanguageButton();
+
+    // Language switch button, wired to the same manager.
+    this._languageButton = createLanguageButton(this._langs);
     this._root.add_child(this._languageButton);
 
     this._rows = [];   // St.BoxLayout row actors
     this._keys = [];   // { btn, pressedId } pairs so we can disconnect
 
     this._subs = [];
-    this._languageManager = ExtensionUtils.getCurrentExtension().imports.core.LanguageManager.getLanguageManager();
-    // Rebuild on language change
-    if (this._languageManager && this._languageManager.connect) {
-        this._languageChangedSignal = this._languageManager.connect('language-changed', () => this.rebuild());
-    }
+    // Rebuild on language change.
+    this._languageChangedSignal = this._langs.connect('language-changed', () => this.rebuild());
   }
 
   // Build the rows from the active layout. Called on enable and on
   // layout/layer changes.
   rebuild() {
     this._clearKeys();
-    const lm = ExtensionUtils.getCurrentExtension().imports.core.LanguageManager.getLanguageManager();
-    const layout = lm.getActiveLayout();
+    const layout = this._langs.getActiveLayout();
     if (!layout) return;
 
     const showNumbers = this._settings.getBoolean('show-number-row');
@@ -124,20 +120,22 @@ export class KeyboardRoot {
     }
     this._subs = [];
     this._clearKeys();
-    this._root = null;
-    this._layout = null;
-    this._layers = null;
-    // Disconnect language change signal
+
+    // Disconnect language change signal before dropping the reference.
     if (this._languageChangedSignal) {
-        this._languageManager.disconnect(this._languageChangedSignal);
-        this._languageChangedSignal = null;
+      this._langs.disconnect(this._languageChangedSignal);
+      this._languageChangedSignal = null;
     }
-    this._dispatcher = null;
-    this._settings = null;
-    // Clean up language button
+    // Clean up language button.
     if (this._languageButton) {
       this._languageButton.destroy();
       this._languageButton = null;
     }
+
+    this._root = null;
+    this._langs = null;
+    this._layers = null;
+    this._dispatcher = null;
+    this._settings = null;
   }
 }

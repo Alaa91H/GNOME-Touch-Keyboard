@@ -13,6 +13,8 @@ export const KEYS = Object.freeze([
     summary: 'Schema version for forward migrations.' },
   { key: 'layout-id', type: 's', default: 'Default',
     summary: 'Active layout id. Only "Default" valid in Sub-project A.' },
+  { key: 'language-id', type: 's', default: 'en',
+    summary: 'Active keyboard language id; scanned from resources/layouts/*.json.' },
   { key: 'show-number-row', type: 'b', default: true,
     summary: 'Render the number row on the Default layout.' },
   { key: 'theme-mode', type: 's', default: 'auto',

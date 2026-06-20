@@ -1,80 +1,109 @@
 // tests/e2e/language_switch_e2e.test.js
-/*
- * End‑to‑end (e2e) test for the GNOME Touch Keyboard extension.
- *
- * This script must be executed inside a GNOME Shell environment (e.g.,
- * a GNOME Wayland session, a VM, or WSL 2 with an X server). It loads the
- * extension, iterates over every language layout, programmatically triggers
- * the language‑switch button and asserts that the keyboard UI rebuilds
- * correctly.
- *
- * Run with:
- *   gjs tests/e2e/language_switch_e2e.test.js
- *
- * The test uses the GNOME Shell testing utilities (`imports.testing`).
- */
+// Integration test for the language-switch data contract: drives
+// LanguageManager through every shipped language and reproduces the row
+// selection logic KeyboardRoot.rebuild() applies (src/ui/KeyboardRoot.js).
+//
+// This is NOT a real GNOME Shell UI test — driving actual St/Clutter actors
+// requires a running compositor (nested Wayland session + extension
+// activation over D-Bus), which isn't reproducible in headless CI. What
+// matters for regressions is that every language's layout data is valid
+// input to KeyboardRoot; that's what this test verifies.
+//
+// Run: gjs -m tests/e2e/language_switch_e2e.test.js
 
-const {ExtensionUtils, Main, St, Shell, Gio} = imports.misc;
-const {assert} = imports.assert;
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import { createLanguageManager } from '../../src/core/LanguageManager.js';
 
-/** Helper to load the extension under test */
-function loadExtension() {
-    const extension = ExtensionUtils.extensions['gnome-touch-keyboard'];
-    if (!extension) {
-        // If not loaded yet, load from the current directory
-        const Me = ExtensionUtils.getCurrentExtension();
-        Me.imports.extension.enable();
-        return Me;
+const SCRIPT_DIR = Gio.File.new_for_uri(import.meta.url).get_parent().get_path();
+const ROOT = GLib.build_filenamev([SCRIPT_DIR, '..', '..']);
+const SCHEMA_ID = 'org.gnome.shell.extensions.gnome-touch-keyboard';
+
+let failures = 0;
+
+function assert(cond, msg) {
+  if (!cond) {
+    failures++;
+    printerr(`FAIL: ${msg}`);
+  } else {
+    print(`ok: ${msg}`);
+  }
+}
+
+function makeSettings() {
+  const schemaDir = GLib.build_filenamev([ROOT, 'schemas']);
+  const source = Gio.SettingsSchemaSource.new_from_directory(
+    schemaDir, Gio.SettingsSchemaSource.get_default(), false);
+  const schema = source.lookup(SCHEMA_ID, true);
+  if (!schema) {
+    throw new Error(
+      `schema ${SCHEMA_ID} not found in ${schemaDir} — run ` +
+      `'glib-compile-schemas schemas/' before running this test`);
+  }
+  const backend = Gio.memory_settings_backend_new();
+  return new Gio.Settings({ settings_schema: schema, backend });
+}
+
+// Mirrors KeyboardRoot.rebuild()'s row selection (src/ui/KeyboardRoot.js):
+// showNumbers ? layout.rows : layout.rows.slice(1).
+function rowsForRender(layout, showNumbers) {
+  return showNumbers ? layout.rows : layout.rows.slice(1);
+}
+
+async function main() {
+  const layoutsDir = Gio.File.new_for_path(
+    GLib.build_filenamev([ROOT, 'resources', 'layouts']));
+  const settings = makeSettings();
+  const lm = createLanguageManager({ layoutsDir, settings });
+  await lm.load();
+
+  const ids = lm.getAvailableIds();
+  assert(ids.length > 0, 'at least one language is available');
+
+  let changeEvents = 0;
+  lm.connect('language-changed', () => changeEvents++);
+
+  const initialId = lm.getActiveId();
+
+  for (const id of ids) {
+    const ok = lm.setActive(id);
+    assert(ok, `switch to "${id}" succeeds`);
+    assert(lm.getActiveId() === id, `getActiveId() reports "${id}" after switch`);
+
+    const layout = lm.getActiveLayout();
+    assert(layout?.rows?.length > 0, `"${id}" layout has at least one row`);
+
+    const withNumbers = rowsForRender(layout, true);
+    const withoutNumbers = rowsForRender(layout, false);
+    assert(withNumbers.length === layout.rows.length,
+      `"${id}": show-number-row=true renders all ${layout.rows.length} rows`);
+    assert(withoutNumbers.length === layout.rows.length - 1,
+      `"${id}": show-number-row=false drops exactly one row`);
+
+    for (const row of withNumbers) {
+      assert(Array.isArray(row) && row.every((key) => typeof key.k === 'string'),
+        `"${id}": every key in every row has a string "k"`);
     }
-    return extension;
+  }
+
+  assert(changeEvents === ids.length,
+    `language-changed fired once per switch (${changeEvents}/${ids.length})`);
+
+  lm.setActive(initialId);
+
+  if (failures > 0) {
+    printerr(`\n${failures} assertion(s) failed`);
+    return 1;
+  }
+  print('\nAll language-switch integration checks passed.');
+  return 0;
 }
 
-function unloadExtension(Me) {
-    if (Me && Me.imports && Me.imports.extension) {
-        Me.imports.extension.disable();
-    }
-}
-
-function getLanguageManager(Me) {
-    return Me.imports.core.LanguageManager.LanguageManager.getInstance();
-}
-
-function getKeyboardRoot(Me) {
-    // The extension creates a KeyboardRoot instance and stores it on Me
-    return Me.imports.ui.KeyboardRoot.getInstance();
-}
-
-function testLanguageSwitch() {
-    const Me = loadExtension();
-    const langMgr = getLanguageManager(Me);
-    const keyboardRoot = getKeyboardRoot(Me);
-
-    const allLanguages = langMgr.getSupportedLanguages();
-    assert.ok(Array.isArray(allLanguages), 'Supported languages should be an array');
-    assert.ok(allLanguages.length > 0, 'There should be at least one language');
-
-    // Remember the initial layout id
-    const initialId = langMgr.getCurrentLanguageId();
-
-    allLanguages.forEach(id => {
-        // Switch language via LanguageManager
-        langMgr.setCurrentLanguageId(id);
-        // Wait for UI rebuild (simple async delay)
-        // In real tests you would connect to the 'language-changed' signal
-        // and verify that KeyboardRoot rows have been refreshed.
-        const layout = langMgr.loadLayout(id);
-        assert.ok(layout, `Layout for ${id} must be loadable`);
-        // Verify that keyboardRoot has rows matching the layout rows count
-        const expectedRows = layout.rows.length;
-        const actualRows = keyboardRoot.getRowsCount(); // assume method exists
-        assert.equal(actualRows, expectedRows,
-            `Keyboard rows for ${id} should match layout rows`);
-    });
-
-    // Restore original language
-    langMgr.setCurrentLanguageId(initialId);
-    unloadExtension(Me);
-    log('E2E language switch test completed successfully');
-}
-
-testLanguageSwitch();
+const loop = GLib.MainLoop.new(null, false);
+let exitCode = 0;
+main()
+  .then((code) => { exitCode = code; })
+  .catch((e) => { printerr(`ERROR: ${e}`); exitCode = 1; })
+  .finally(() => loop.quit());
+loop.run();
+imports.system.exit(exitCode);

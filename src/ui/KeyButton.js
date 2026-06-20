@@ -13,7 +13,6 @@ export const KeyButton = GObject.registerClass({
   _init(logicalKey, label, widthFactor = 1.0) {
     this._logicalKey = logicalKey;
     this._widthFactor = widthFactor;
-    this._destroyed = false;
 
     super._init({
       label: label != null ? String(label) : '',
@@ -43,22 +42,18 @@ export const KeyButton = GObject.registerClass({
   get widthFactor() { return this._widthFactor; }
 
   setLabel(text) {
-    if (this._destroyed) return;
     this.label = text != null ? String(text) : '';
   }
 
   // Latched modifier visual (Shift one-shot; future sticky mods).
   setChecked(checked) {
-    if (this._destroyed) return;
     if (checked) this.add_style_pseudo_class('checked');
     else this.remove_style_pseudo_class('checked');
   }
 
   destroy() {
-    if (this._destroyed) return;
-    this._destroyed = true;
-    try { this.disconnect(this._pressId); } catch (_) {}
-    try { this.disconnect(this._releaseId); } catch (_) {}
+    this.disconnect(this._pressId);
+    this.disconnect(this._releaseId);
     super.destroy();
   }
 });

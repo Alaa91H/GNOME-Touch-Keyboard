@@ -2,37 +2,17 @@
 // Spec §2 + §4. Wraps Gio.Settings; all other modules obtain settings
 // through this object, never directly. Central dispose().
 
-import Gio from 'gi://Gio';
-import GLib from 'gi://GLib';
-import { SCHEMA_ID, SCHEMA_PATH, DEFAULTS } from '../settings/defaults.js';
+import { DEFAULTS } from '../settings/defaults.js';
 import { migrate } from '../settings/migrations.js';
 
 export class SettingsController {
-  constructor(extensionDir) {
-    this._extensionDir = extensionDir; // for schema source fallback
-    this._settings = this._openSettings();
+  // `settings` is the Gio.Settings provided by Extension.getSettings().
+  constructor(settings) {
+    this._settings = settings;
     this._subs = []; // array of { target, id, kind } for cleanup
 
     // Run migrations before anyone reads keys.
     migrate(this._settings);
-  }
-
-  _openSettings() {
-    // Try the installed schema source first; fall back to a schema
-    // compiled from our schemas/ dir during development. In production
-    // (gnome-extensions install) the schema is in the system source.
-    try {
-      const s = new Gio.Settings({ schema_id: SCHEMA_ID });
-      return s;
-    } catch (e) {
-      // Development fallback: build a SettingsSchemaSource from our dir.
-      const schemaDir = GLib.build_filenamev([this._extensionDir, 'schemas']);
-      const source = Gio.SettingsSchemaSource.new_from_directory(
-        schemaDir, Gio.SettingsSchemaSource.get_default(), false);
-      const schema = source.lookup(SCHEMA_ID, true);
-      if (!schema) throw new Error(`schema ${SCHEMA_ID} not found in ${schemaDir}`);
-      return new Gio.Settings({ settings_schema: schema });
-    }
   }
 
   get raw() { return this._settings; }

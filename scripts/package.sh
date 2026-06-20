@@ -8,8 +8,10 @@ cd "$ROOT"
 rm -f "$OUT"
 # gnome-extensions install requires a flat zip of the extension files
 # (no top-level dir). zip the tracked files only.
+# gschemas.compiled is intentionally excluded: GNOME Shell 45+ compiles the
+# schema at install time, and EGO rejects bundled compiled schemas.
 zip -r "$OUT" \
   metadata.json extension.js prefs.js stylesheet.css \
   src schemas resources \
-  -x '*.superpowers*' -x 'node_modules/*' >/dev/null
+  -x '*.superpowers*' -x 'node_modules/*' -x 'schemas/gschemas.compiled' >/dev/null
 echo "Built $OUT"
