@@ -3,20 +3,26 @@ name: CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      bump_version:
+        description: "Set to true to bump version and release"
+        required: false
+        default: "false"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.3
+        with:
+          fetch-depth: 0  # needed for tags
 
       - name: Set up GJS and dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y gjs glib-compile-schemas xvfb
+          sudo apt-get install -y gjs glib-compile-schemas xvfb jq gh
 
       - name: Compile GSettings schema
         run: |
@@ -33,3 +39,47 @@ jobs:
           Xvfb :99 -screen 0 1024x768x24 &
           sleep 3
           gjs tests/e2e/language_switch_e2e.test.js
+
+      - name: Bump version and tag (if requested)
+        if: ${{ github.event_name == 'push' || github.event.inputs.bump_version == 'true' }}
+        env:
+          GIT_AUTHOR_NAME: github-actions
+          GIT_AUTHOR_EMAIL: github-actions@github.com
+          GIT_COMMITTER_NAME: github-actions
+          GIT_COMMITTER_EMAIL: github-actions@github.com
+        run: |
+          ./scripts/bump_version.sh
+          NEW_VER=$(jq -r '.version' metadata.json)
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add metadata.json
+          git commit -m "Bump version to $NEW_VER"
+          TAG="v$NEW_VER"
+          git tag $TAG
+          git push origin main --tags
+
+      - name: Package extension
+        run: |
+          ./scripts/package.sh
+
+      - name: Upload packaged zip as artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: gnome-touch-keyboard-zip
+          path: gnome-touch-keyboard@alaa91h.github.io.zip
+
+      - name: Download packaged zip
+        uses: actions/download-artifact@v8.0.1
+        with:
+          name: gnome-touch-keyboard-zip
+          path: ./
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v$(jq -r '.version' metadata.json)
+          name: Release v$(jq -r '.version' metadata.json)
+          body: "Automated release of GNOME Touch Keyboard extension."
+          files: gnome-touch-keyboard@alaa91h.github.io.zip
