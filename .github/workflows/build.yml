@@ -22,7 +22,7 @@ jobs:
       - name: Set up GJS and dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y gjs glib-compile-schemas xvfb jq gh
+          sudo apt-get install -y gjs glib-2.0 xvfb jq ghemas xvfb jq gh
 
       - name: Compile GSettings schema
         run: |
